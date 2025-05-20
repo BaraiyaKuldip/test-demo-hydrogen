@@ -1,13 +1,12 @@
-import {defineConfig} from 'vite';
-import {hydrogen} from '@shopify/hydrogen/vite';
-import {oxygen} from '@shopify/mini-oxygen/vite';
-import {vitePlugin as remix} from '@remix-run/dev';
+import { defineConfig } from 'vite';
+import { hydrogen } from '@shopify/hydrogen/vite';
+import { oxygen } from '@shopify/mini-oxygen/vite';
+import { vitePlugin as remix } from '@remix-run/dev';
 import tsconfigPaths from 'vite-tsconfig-paths';
-
 
 export default defineConfig({
   plugins: [
-    hydrogen(),
+    hydrogen(), // Remove buildDirectory option (no longer needed)
     oxygen(),
     remix({
       presets: [hydrogen.preset()],
@@ -20,7 +19,12 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  build: {
+    outDir: 'build', // Use Vite's native outDir instead
+    assetsInlineLimit: 0,
+  },
   ssr: {
+    target: 'node', // Important for Vercel
     optimizeDeps: {
       include: ['typographic-base'],
     },
@@ -35,10 +39,5 @@ export default defineConfig({
       'react-use/esm/useDebounce',
       'react-use/esm/useWindowScroll',
     ],
-  },
-  build: {
-    // Allow a strict Content-Security-Policy
-    // withtout inlining assets as base64:
-    assetsInlineLimit: 0,
   },
 });

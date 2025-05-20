@@ -7,7 +7,6 @@
   "scripts": {
     "dev": "shopify hydrogen dev --codegen",
     "build": "vite build",
-    "postbuild": "mkdir -p build && cp -R dist/server/* build/",
     "preview": "npm run build && shopify hydrogen preview",
     "e2e": "npx playwright test",
     "e2e:ui": "npx playwright test --ui",
