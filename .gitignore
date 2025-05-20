@@ -1,13 +1,26 @@
-node_modules
-/.DS_Store
+# Dependencies
+node_modules/
+
+# Build outputs
 /.cache
-/build
-/dist
-/public/build
-/.mf
+
+
+# Environment files
 .env
-.vscode
-.shopify
+.env.*
+!.env.example  # Keep example env files
+
+# Editor/IDE
+.DS_Store
+.vscode/
+
+# Shopify
+.shopify/
+
+# Testing
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+# MiniOxygen
+.mf/

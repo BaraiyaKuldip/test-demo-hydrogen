@@ -1,0 +1,1 @@
+import{j as m}from"./components-DQ2b9yAr.js";import{c as n}from"./Text-D7gGMkA0.js";function p({as:s="div",width:r,height:o,className:t,...e}){const a=n("rounded bg-primary/10",t);return m.jsx(s,{...e,width:r,height:o,className:a})}export{p as S};
